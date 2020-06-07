@@ -1,29 +1,44 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+import BottomNavigation from "./components/BottomNavigation";
+import Weather from "./Weather";
+import Location from "./Location";
+import Settings from "./Settings";
 
-function getWeatherData(setAppState: any, axios: any): void {
-  let data = localStorage.getItem("data");
+export type View = "weather" | "location" | "settings";
+export type SetView = React.Dispatch<React.SetStateAction<string>>;
 
-  if (data) {
-    setAppState(data);
-  } else {
-    data = axios.get();
-    setAppState(data);
+export default function App() {
+  const [view, setView] = useState("weather");
+  const classes = useStyles();
+
+  let ViewComponent: React.FC = Weather;
+
+  switch (view) {
+    case "weather":
+      ViewComponent = Weather;
+      break;
+    case "location":
+      ViewComponent = Location;
+      break;
+    case "settings":
+      ViewComponent = Settings;
+      break;
   }
-}
-
-const App = () => {
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    getWeatherData(setData, axios);
-  }, []);
 
   return (
-    <div>
-      <h1>Foo</h1>
-    </div>
+    <Container className={classes.container} maxWidth="sm">
+      <ViewComponent />
+      <BottomNavigation view={view as View} setView={setView} />
+    </Container>
   );
-};
+}
 
-export default App;
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
