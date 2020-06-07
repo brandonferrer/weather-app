@@ -5,7 +5,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import CloudOutlinedIcon from "@material-ui/icons/CloudOutlined";
 import PinDropOutlinedIcon from "@material-ui/icons/PinDropOutlined";
 import TuneOutlinedIcon from "@material-ui/icons/TuneOutlined";
-import { View, SetView } from "../App";
+import { View, SetView } from "../../App";
 
 type Props = {
   view: View;

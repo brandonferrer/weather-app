@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
-import BottomNavigation from "./components/BottomNavigation";
+import BottomNavigation from "./shared/components/BottomNavigation";
 import Weather from "./Weather";
 import Location from "./Location";
 import Settings from "./Settings";
