@@ -6,9 +6,6 @@ import Weather from "../Weather";
 import Location from "../Location";
 import Settings from "../Settings";
 
-export type View = "weather" | "location" | "settings";
-export type SetView = React.Dispatch<React.SetStateAction<string>>;
-
 export default function App() {
   const [view, setView] = useState("weather");
   const classes = useStyles();
