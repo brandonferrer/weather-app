@@ -1,5 +1,19 @@
 import React from "react";
+import LocationAutoComplete from "../shared/components/LocationAutoComplete";
 
-const Location = () => <h1>Location</h1>;
-
-export default Location;
+export default function Location() {
+  return (
+    <div
+      style={{
+        flex: 1,
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
+      <div>
+        <LocationAutoComplete />
+      </div>
+    </div>
+  );
+}

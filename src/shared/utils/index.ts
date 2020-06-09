@@ -1,230 +1,25 @@
-const MOCK_API_DATA = {
+import { kelvinToCelsius } from "./kelvinToCelsius";
+import { kelvinToFahrenheit } from "./kelvinToFahrenheit";
+
+export { kelvinToCelsius, kelvinToFahrenheit };
+
+export const MOCK_API_RESPONSE = {
   cod: "200",
   message: 0,
   cnt: 40,
   list: [
     {
-      dt: 1591434000,
+      dt: 1591693200,
       main: {
-        temp: 291.5,
-        feels_like: 290.85,
-        temp_min: 291.5,
-        temp_max: 291.96,
-        pressure: 1011,
-        sea_level: 1010,
-        grnd_level: 1005,
-        humidity: 75,
-        temp_kf: -0.46,
-      },
-      weather: [
-        {
-          id: 500,
-          main: "Rain",
-          description: "light rain",
-          icon: "10n",
-        },
-      ],
-      clouds: {
-        all: 94,
-      },
-      wind: {
-        speed: 2.66,
-        deg: 225,
-      },
-      rain: {
-        "3h": 0.29,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-06 09:00:00",
-    },
-    {
-      dt: 1591444800,
-      main: {
-        temp: 291.7,
-        feels_like: 290.85,
-        temp_min: 291.7,
-        temp_max: 291.88,
-        pressure: 1011,
-        sea_level: 1011,
-        grnd_level: 1006,
-        humidity: 74,
-        temp_kf: -0.18,
-      },
-      weather: [
-        {
-          id: 500,
-          main: "Rain",
-          description: "light rain",
-          icon: "10n",
-        },
-      ],
-      clouds: {
-        all: 94,
-      },
-      wind: {
-        speed: 2.94,
-        deg: 264,
-      },
-      rain: {
-        "3h": 0.24,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-06 12:00:00",
-    },
-    {
-      dt: 1591455600,
-      main: {
-        temp: 291.52,
-        feels_like: 290.28,
-        temp_min: 291.52,
-        temp_max: 291.55,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1008,
-        humidity: 77,
-        temp_kf: -0.03,
-      },
-      weather: [
-        {
-          id: 500,
-          main: "Rain",
-          description: "light rain",
-          icon: "10d",
-        },
-      ],
-      clouds: {
-        all: 87,
-      },
-      wind: {
-        speed: 3.71,
-        deg: 292,
-      },
-      rain: {
-        "3h": 0.33,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-06 15:00:00",
-    },
-    {
-      dt: 1591466400,
-      main: {
-        temp: 291.67,
-        feels_like: 289.55,
-        temp_min: 291.67,
-        temp_max: 291.67,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1009,
-        humidity: 70,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 500,
-          main: "Rain",
-          description: "light rain",
-          icon: "10d",
-        },
-      ],
-      clouds: {
-        all: 78,
-      },
-      wind: {
-        speed: 4.33,
-        deg: 266,
-      },
-      rain: {
-        "3h": 0.1,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-06 18:00:00",
-    },
-    {
-      dt: 1591477200,
-      main: {
-        temp: 292.56,
-        feels_like: 289.96,
-        temp_min: 292.56,
-        temp_max: 292.56,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1008,
-        humidity: 61,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 802,
-          main: "Clouds",
-          description: "scattered clouds",
-          icon: "03d",
-        },
-      ],
-      clouds: {
-        all: 33,
-      },
-      wind: {
-        speed: 4.46,
-        deg: 252,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-06 21:00:00",
-    },
-    {
-      dt: 1591488000,
-      main: {
-        temp: 292.7,
-        feels_like: 290.52,
-        temp_min: 292.7,
-        temp_max: 292.7,
-        pressure: 1012,
-        sea_level: 1012,
-        grnd_level: 1007,
-        humidity: 64,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 802,
-          main: "Clouds",
-          description: "scattered clouds",
-          icon: "03d",
-        },
-      ],
-      clouds: {
-        all: 26,
-      },
-      wind: {
-        speed: 4.24,
-        deg: 246,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-07 00:00:00",
-    },
-    {
-      dt: 1591498800,
-      main: {
-        temp: 291.73,
-        feels_like: 290.23,
-        temp_min: 291.73,
-        temp_max: 291.73,
-        pressure: 1012,
-        sea_level: 1012,
-        grnd_level: 1008,
-        humidity: 69,
-        temp_kf: 0,
+        temp: 293.98,
+        feels_like: 291.3,
+        temp_min: 293.98,
+        temp_max: 294.93,
+        pressure: 1016,
+        sea_level: 1016,
+        grnd_level: 1004,
+        humidity: 30,
+        temp_kf: -0.95,
       },
       weather: [
         {
@@ -235,260 +30,29 @@ const MOCK_API_DATA = {
         },
       ],
       clouds: {
-        all: 5,
+        all: 1,
       },
       wind: {
-        speed: 3.37,
-        deg: 298,
+        speed: 1.59,
+        deg: 78,
       },
       sys: {
         pod: "n",
       },
-      dt_txt: "2020-06-07 03:00:00",
+      dt_txt: "2020-06-09 09:00:00",
     },
     {
-      dt: 1591509600,
+      dt: 1591704000,
       main: {
-        temp: 291.6,
-        feels_like: 289.96,
-        temp_min: 291.6,
-        temp_max: 291.6,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1008,
-        humidity: 68,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 802,
-          main: "Clouds",
-          description: "scattered clouds",
-          icon: "03n",
-        },
-      ],
-      clouds: {
-        all: 27,
-      },
-      wind: {
-        speed: 3.42,
-        deg: 281,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-07 06:00:00",
-    },
-    {
-      dt: 1591520400,
-      main: {
-        temp: 290.71,
-        feels_like: 289.28,
-        temp_min: 290.71,
-        temp_max: 290.71,
-        pressure: 1012,
-        sea_level: 1012,
-        grnd_level: 1007,
-        humidity: 68,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 802,
-          main: "Clouds",
-          description: "scattered clouds",
-          icon: "03n",
-        },
-      ],
-      clouds: {
-        all: 29,
-      },
-      wind: {
-        speed: 2.75,
-        deg: 245,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-07 09:00:00",
-    },
-    {
-      dt: 1591531200,
-      main: {
-        temp: 290.27,
-        feels_like: 289.26,
-        temp_min: 290.27,
-        temp_max: 290.27,
-        pressure: 1011,
-        sea_level: 1011,
-        grnd_level: 1006,
-        humidity: 68,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 801,
-          main: "Clouds",
-          description: "few clouds",
-          icon: "02n",
-        },
-      ],
-      clouds: {
-        all: 15,
-      },
-      wind: {
-        speed: 1.97,
-        deg: 166,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-07 12:00:00",
-    },
-    {
-      dt: 1591542000,
-      main: {
-        temp: 291.37,
-        feels_like: 290.07,
-        temp_min: 291.37,
-        temp_max: 291.37,
-        pressure: 1011,
-        sea_level: 1011,
-        grnd_level: 1007,
-        humidity: 63,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 2.34,
-        deg: 148,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-07 15:00:00",
-    },
-    {
-      dt: 1591552800,
-      main: {
-        temp: 293.59,
-        feels_like: 291.81,
-        temp_min: 293.59,
-        temp_max: 293.59,
-        pressure: 1012,
-        sea_level: 1012,
-        grnd_level: 1007,
-        humidity: 54,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 2.93,
-        deg: 241,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-07 18:00:00",
-    },
-    {
-      dt: 1591563600,
-      main: {
-        temp: 295.11,
-        feels_like: 291.84,
-        temp_min: 295.11,
-        temp_max: 295.11,
-        pressure: 1010,
-        sea_level: 1010,
-        grnd_level: 1006,
-        humidity: 49,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 5.04,
-        deg: 288,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-07 21:00:00",
-    },
-    {
-      dt: 1591574400,
-      main: {
-        temp: 294.18,
-        feels_like: 290.57,
-        temp_min: 294.18,
-        temp_max: 294.18,
-        pressure: 1010,
-        sea_level: 1010,
-        grnd_level: 1005,
-        humidity: 59,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 6.36,
-        deg: 295,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-08 00:00:00",
-    },
-    {
-      dt: 1591585200,
-      main: {
-        temp: 293.25,
-        feels_like: 290.76,
-        temp_min: 293.25,
-        temp_max: 293.25,
-        pressure: 1010,
-        sea_level: 1010,
-        grnd_level: 1005,
-        humidity: 52,
-        temp_kf: 0,
+        temp: 294.15,
+        feels_like: 290.88,
+        temp_min: 294.15,
+        temp_max: 294.44,
+        pressure: 1016,
+        sea_level: 1016,
+        grnd_level: 1004,
+        humidity: 25,
+        temp_kf: -0.29,
       },
       weather: [
         {
@@ -502,124 +66,91 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 3.59,
+        speed: 1.88,
+        deg: 67,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-09 12:00:00",
+    },
+    {
+      dt: 1591714800,
+      main: {
+        temp: 296.75,
+        feels_like: 293.51,
+        temp_min: 296.75,
+        temp_max: 297,
+        pressure: 1017,
+        sea_level: 1017,
+        grnd_level: 1005,
+        humidity: 20,
+        temp_kf: -0.25,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 1.66,
+        deg: 60,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-09 15:00:00",
+    },
+    {
+      dt: 1591725600,
+      main: {
+        temp: 301.64,
+        feels_like: 297.88,
+        temp_min: 301.64,
+        temp_max: 301.71,
+        pressure: 1017,
+        sea_level: 1017,
+        grnd_level: 1005,
+        humidity: 14,
+        temp_kf: -0.07,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 2.21,
         deg: 301,
       },
       sys: {
-        pod: "n",
+        pod: "d",
       },
-      dt_txt: "2020-06-08 03:00:00",
+      dt_txt: "2020-06-09 18:00:00",
     },
     {
-      dt: 1591596000,
+      dt: 1591736400,
       main: {
-        temp: 292.42,
-        feels_like: 291.06,
-        temp_min: 292.42,
-        temp_max: 292.42,
-        pressure: 1011,
-        sea_level: 1011,
-        grnd_level: 1007,
-        humidity: 58,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 2.32,
-        deg: 260,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-08 06:00:00",
-    },
-    {
-      dt: 1591606800,
-      main: {
-        temp: 291.69,
-        feels_like: 291.05,
-        temp_min: 291.69,
-        temp_max: 291.69,
-        pressure: 1010,
-        sea_level: 1010,
-        grnd_level: 1006,
-        humidity: 65,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 1.73,
-        deg: 173,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-08 09:00:00",
-    },
-    {
-      dt: 1591617600,
-      main: {
-        temp: 291.42,
-        feels_like: 290.95,
-        temp_min: 291.42,
-        temp_max: 291.42,
-        pressure: 1011,
-        sea_level: 1011,
-        grnd_level: 1006,
-        humidity: 61,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 0.98,
-        deg: 134,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-08 12:00:00",
-    },
-    {
-      dt: 1591628400,
-      main: {
-        temp: 292.66,
-        feels_like: 291.81,
-        temp_min: 292.66,
-        temp_max: 292.66,
-        pressure: 1012,
-        sea_level: 1012,
-        grnd_level: 1008,
-        humidity: 52,
+        temp: 302.27,
+        feels_like: 296.49,
+        temp_min: 302.27,
+        temp_max: 302.27,
+        pressure: 1016,
+        sea_level: 1016,
+        grnd_level: 1004,
+        humidity: 14,
         temp_kf: 0,
       },
       weather: [
@@ -634,189 +165,123 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 1.05,
+        speed: 5.2,
+        deg: 309,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-09 21:00:00",
+    },
+    {
+      dt: 1591747200,
+      main: {
+        temp: 300.75,
+        feels_like: 294.42,
+        temp_min: 300.75,
+        temp_max: 300.75,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
+        humidity: 18,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 6.45,
+        deg: 317,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-10 00:00:00",
+    },
+    {
+      dt: 1591758000,
+      main: {
+        temp: 297.9,
+        feels_like: 293.51,
+        temp_min: 297.9,
+        temp_max: 297.9,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
+        humidity: 24,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 4.08,
+        deg: 328,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-10 03:00:00",
+    },
+    {
+      dt: 1591768800,
+      main: {
+        temp: 296.17,
+        feels_like: 293.14,
+        temp_min: 296.17,
+        temp_max: 296.17,
+        pressure: 1016,
+        sea_level: 1016,
+        grnd_level: 1004,
+        humidity: 31,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 2.71,
         deg: 319,
       },
       sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-08 15:00:00",
-    },
-    {
-      dt: 1591639200,
-      main: {
-        temp: 296.06,
-        feels_like: 292.94,
-        temp_min: 296.06,
-        temp_max: 296.06,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1008,
-        humidity: 36,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 3.47,
-        deg: 299,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-08 18:00:00",
-    },
-    {
-      dt: 1591650000,
-      main: {
-        temp: 298.92,
-        feels_like: 294.25,
-        temp_min: 298.92,
-        temp_max: 298.92,
-        pressure: 1012,
-        sea_level: 1012,
-        grnd_level: 1008,
-        humidity: 28,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 5.32,
-        deg: 312,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-08 21:00:00",
-    },
-    {
-      dt: 1591660800,
-      main: {
-        temp: 298.58,
-        feels_like: 293.3,
-        temp_min: 298.58,
-        temp_max: 298.58,
-        pressure: 1011,
-        sea_level: 1011,
-        grnd_level: 1007,
-        humidity: 30,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 6.41,
-        deg: 320,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-09 00:00:00",
-    },
-    {
-      dt: 1591671600,
-      main: {
-        temp: 297.13,
-        feels_like: 293.8,
-        temp_min: 297.13,
-        temp_max: 297.13,
-        pressure: 1012,
-        sea_level: 1012,
-        grnd_level: 1008,
-        humidity: 34,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 3.8,
-        deg: 335,
-      },
-      sys: {
         pod: "n",
       },
-      dt_txt: "2020-06-09 03:00:00",
+      dt_txt: "2020-06-10 06:00:00",
     },
     {
-      dt: 1591682400,
+      dt: 1591779600,
       main: {
-        temp: 296.46,
-        feels_like: 294.52,
-        temp_min: 296.46,
-        temp_max: 296.46,
+        temp: 295.14,
+        feels_like: 293.39,
+        temp_min: 295.14,
+        temp_max: 295.14,
         pressure: 1014,
         sea_level: 1014,
-        grnd_level: 1010,
-        humidity: 35,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 1.77,
-        deg: 315,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-09 06:00:00",
-    },
-    {
-      dt: 1591693200,
-      main: {
-        temp: 295.53,
-        feels_like: 294.42,
-        temp_min: 295.53,
-        temp_max: 295.53,
-        pressure: 1014,
-        sea_level: 1014,
-        grnd_level: 1009,
+        grnd_level: 1002,
         humidity: 37,
         temp_kf: 0,
       },
@@ -832,272 +297,8 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 0.58,
-        deg: 359,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-09 09:00:00",
-    },
-    {
-      dt: 1591704000,
-      main: {
-        temp: 295.31,
-        feels_like: 292.94,
-        temp_min: 295.31,
-        temp_max: 295.31,
-        pressure: 1014,
-        sea_level: 1014,
-        grnd_level: 1010,
-        humidity: 26,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 0.94,
-        deg: 46,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-09 12:00:00",
-    },
-    {
-      dt: 1591714800,
-      main: {
-        temp: 297.23,
-        feels_like: 294.8,
-        temp_min: 297.23,
-        temp_max: 297.23,
-        pressure: 1015,
-        sea_level: 1015,
-        grnd_level: 1011,
-        humidity: 20,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 0.57,
-        deg: 87,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-09 15:00:00",
-    },
-    {
-      dt: 1591725600,
-      main: {
-        temp: 301.18,
-        feels_like: 297.11,
-        temp_min: 301.18,
-        temp_max: 301.18,
-        pressure: 1016,
-        sea_level: 1016,
-        grnd_level: 1011,
-        humidity: 15,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 2.77,
-        deg: 286,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-09 18:00:00",
-    },
-    {
-      dt: 1591736400,
-      main: {
-        temp: 302.1,
-        feels_like: 295.96,
-        temp_min: 302.1,
-        temp_max: 302.1,
-        pressure: 1015,
-        sea_level: 1015,
-        grnd_level: 1010,
-        humidity: 15,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 5.87,
-        deg: 298,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-09 21:00:00",
-    },
-    {
-      dt: 1591747200,
-      main: {
-        temp: 301.07,
-        feels_like: 295.58,
-        temp_min: 301.07,
-        temp_max: 301.07,
-        pressure: 1014,
-        sea_level: 1014,
-        grnd_level: 1009,
-        humidity: 19,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 5.49,
-        deg: 317,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-10 00:00:00",
-    },
-    {
-      dt: 1591758000,
-      main: {
-        temp: 298.74,
-        feels_like: 295.03,
-        temp_min: 298.74,
-        temp_max: 298.74,
-        pressure: 1014,
-        sea_level: 1014,
-        grnd_level: 1009,
-        humidity: 25,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 3.44,
-        deg: 327,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-10 03:00:00",
-    },
-    {
-      dt: 1591768800,
-      main: {
-        temp: 297.55,
-        feels_like: 295.19,
-        temp_min: 297.55,
-        temp_max: 297.55,
-        pressure: 1015,
-        sea_level: 1015,
-        grnd_level: 1010,
-        humidity: 30,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 1.97,
-        deg: 337,
-      },
-      sys: {
-        pod: "n",
-      },
-      dt_txt: "2020-06-10 06:00:00",
-    },
-    {
-      dt: 1591779600,
-      main: {
-        temp: 296.27,
-        feels_like: 294.1,
-        temp_min: 296.27,
-        temp_max: 296.27,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1009,
-        humidity: 34,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01n",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 1.91,
-        deg: 330,
+        speed: 1.38,
+        deg: 321,
       },
       sys: {
         pod: "n",
@@ -1107,14 +308,14 @@ const MOCK_API_DATA = {
     {
       dt: 1591790400,
       main: {
-        temp: 295.68,
-        feels_like: 293.71,
-        temp_min: 295.68,
-        temp_max: 295.68,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1009,
-        humidity: 35,
+        temp: 294.59,
+        feels_like: 292.82,
+        temp_min: 294.59,
+        temp_max: 294.59,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 36,
         temp_kf: 0,
       },
       weather: [
@@ -1129,8 +330,8 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 1.59,
-        deg: 337,
+        speed: 1.14,
+        deg: 314,
       },
       sys: {
         pod: "n",
@@ -1140,14 +341,14 @@ const MOCK_API_DATA = {
     {
       dt: 1591801200,
       main: {
-        temp: 297.59,
-        feels_like: 295.36,
-        temp_min: 297.59,
-        temp_max: 297.59,
-        pressure: 1014,
-        sea_level: 1014,
-        grnd_level: 1009,
-        humidity: 27,
+        temp: 296.84,
+        feels_like: 294.94,
+        temp_min: 296.84,
+        temp_max: 296.84,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
+        humidity: 29,
         temp_kf: 0,
       },
       weather: [
@@ -1162,8 +363,8 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 1.36,
-        deg: 332,
+        speed: 0.99,
+        deg: 298,
       },
       sys: {
         pod: "d",
@@ -1173,46 +374,13 @@ const MOCK_API_DATA = {
     {
       dt: 1591812000,
       main: {
-        temp: 300.84,
-        feels_like: 296.78,
-        temp_min: 300.84,
-        temp_max: 300.84,
-        pressure: 1014,
-        sea_level: 1014,
-        grnd_level: 1010,
-        humidity: 20,
-        temp_kf: 0,
-      },
-      weather: [
-        {
-          id: 800,
-          main: "Clear",
-          description: "clear sky",
-          icon: "01d",
-        },
-      ],
-      clouds: {
-        all: 0,
-      },
-      wind: {
-        speed: 3.58,
-        deg: 299,
-      },
-      sys: {
-        pod: "d",
-      },
-      dt_txt: "2020-06-10 18:00:00",
-    },
-    {
-      dt: 1591822800,
-      main: {
-        temp: 301.17,
+        temp: 299.9,
         feels_like: 296.13,
-        temp_min: 301.17,
-        temp_max: 301.17,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1008,
+        temp_min: 299.9,
+        temp_max: 299.9,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
         humidity: 22,
         temp_kf: 0,
       },
@@ -1228,8 +396,41 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 5.4,
-        deg: 291,
+        speed: 3.31,
+        deg: 274,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-10 18:00:00",
+    },
+    {
+      dt: 1591822800,
+      main: {
+        temp: 300.45,
+        feels_like: 296.12,
+        temp_min: 300.45,
+        temp_max: 300.45,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 24,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 4.56,
+        deg: 280,
       },
       sys: {
         pod: "d",
@@ -1239,13 +440,13 @@ const MOCK_API_DATA = {
     {
       dt: 1591833600,
       main: {
-        temp: 300.19,
-        feels_like: 296.31,
-        temp_min: 300.19,
-        temp_max: 300.19,
-        pressure: 1012,
-        sea_level: 1012,
-        grnd_level: 1007,
+        temp: 299.6,
+        feels_like: 296.19,
+        temp_min: 299.6,
+        temp_max: 299.6,
+        pressure: 1013,
+        sea_level: 1013,
+        grnd_level: 1001,
         humidity: 26,
         temp_kf: 0,
       },
@@ -1261,8 +462,8 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 4.2,
-        deg: 300,
+        speed: 3.38,
+        deg: 289,
       },
       sys: {
         pod: "d",
@@ -1272,14 +473,14 @@ const MOCK_API_DATA = {
     {
       dt: 1591844400,
       main: {
-        temp: 297.98,
-        feels_like: 295.43,
-        temp_min: 297.98,
-        temp_max: 297.98,
-        pressure: 1013,
-        sea_level: 1013,
-        grnd_level: 1008,
-        humidity: 33,
+        temp: 296.95,
+        feels_like: 294.94,
+        temp_min: 296.95,
+        temp_max: 296.95,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 36,
         temp_kf: 0,
       },
       weather: [
@@ -1294,8 +495,8 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 2.79,
-        deg: 301,
+        speed: 2.15,
+        deg: 266,
       },
       sys: {
         pod: "n",
@@ -1305,14 +506,14 @@ const MOCK_API_DATA = {
     {
       dt: 1591855200,
       main: {
-        temp: 296.76,
-        feels_like: 295.42,
-        temp_min: 296.76,
-        temp_max: 296.76,
-        pressure: 1014,
-        sea_level: 1014,
-        grnd_level: 1009,
-        humidity: 39,
+        temp: 295.68,
+        feels_like: 294.38,
+        temp_min: 295.68,
+        temp_max: 295.68,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
+        humidity: 40,
         temp_kf: 0,
       },
       weather: [
@@ -1327,41 +528,817 @@ const MOCK_API_DATA = {
         all: 0,
       },
       wind: {
-        speed: 1.55,
-        deg: 294,
+        speed: 1.28,
+        deg: 285,
       },
       sys: {
         pod: "n",
       },
       dt_txt: "2020-06-11 06:00:00",
     },
+    {
+      dt: 1591866000,
+      main: {
+        temp: 294.98,
+        feels_like: 293.68,
+        temp_min: 294.98,
+        temp_max: 294.98,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 41,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 1.19,
+        deg: 256,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-11 09:00:00",
+    },
+    {
+      dt: 1591876800,
+      main: {
+        temp: 294.05,
+        feels_like: 293.4,
+        temp_min: 294.05,
+        temp_max: 294.05,
+        pressure: 1013,
+        sea_level: 1013,
+        grnd_level: 1001,
+        humidity: 45,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 0.45,
+        deg: 302,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-11 12:00:00",
+    },
+    {
+      dt: 1591887600,
+      main: {
+        temp: 296.3,
+        feels_like: 294.82,
+        temp_min: 296.3,
+        temp_max: 296.3,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 36,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 1.2,
+        deg: 298,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-11 15:00:00",
+    },
+    {
+      dt: 1591898400,
+      main: {
+        temp: 299.28,
+        feels_like: 295.79,
+        temp_min: 299.28,
+        temp_max: 299.28,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
+        humidity: 27,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 3.57,
+        deg: 255,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-11 18:00:00",
+    },
+    {
+      dt: 1591909200,
+      main: {
+        temp: 299.49,
+        feels_like: 295.67,
+        temp_min: 299.49,
+        temp_max: 299.49,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 27,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 4.1,
+        deg: 247,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-11 21:00:00",
+    },
+    {
+      dt: 1591920000,
+      main: {
+        temp: 298.72,
+        feels_like: 295.78,
+        temp_min: 298.72,
+        temp_max: 298.72,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 30,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 3.11,
+        deg: 241,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-12 00:00:00",
+    },
+    {
+      dt: 1591930800,
+      main: {
+        temp: 295.26,
+        feels_like: 294.02,
+        temp_min: 295.26,
+        temp_max: 295.26,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 48,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 2.06,
+        deg: 234,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-12 03:00:00",
+    },
+    {
+      dt: 1591941600,
+      main: {
+        temp: 293.87,
+        feels_like: 292.8,
+        temp_min: 293.87,
+        temp_max: 293.87,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
+        humidity: 56,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 2.25,
+        deg: 233,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-12 06:00:00",
+    },
+    {
+      dt: 1591952400,
+      main: {
+        temp: 292.57,
+        feels_like: 292.99,
+        temp_min: 292.57,
+        temp_max: 292.57,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 64,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 803,
+          main: "Clouds",
+          description: "broken clouds",
+          icon: "04n",
+        },
+      ],
+      clouds: {
+        all: 74,
+      },
+      wind: {
+        speed: 0.48,
+        deg: 199,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-12 09:00:00",
+    },
+    {
+      dt: 1591963200,
+      main: {
+        temp: 292.12,
+        feels_like: 291.92,
+        temp_min: 292.12,
+        temp_max: 292.12,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 66,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 804,
+          main: "Clouds",
+          description: "overcast clouds",
+          icon: "04n",
+        },
+      ],
+      clouds: {
+        all: 87,
+      },
+      wind: {
+        speed: 1.38,
+        deg: 221,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-12 12:00:00",
+    },
+    {
+      dt: 1591974000,
+      main: {
+        temp: 292.69,
+        feels_like: 292.19,
+        temp_min: 292.69,
+        temp_max: 292.69,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
+        humidity: 65,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 804,
+          main: "Clouds",
+          description: "overcast clouds",
+          icon: "04d",
+        },
+      ],
+      clouds: {
+        all: 95,
+      },
+      wind: {
+        speed: 1.94,
+        deg: 223,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-12 15:00:00",
+    },
+    {
+      dt: 1591984800,
+      main: {
+        temp: 294.69,
+        feels_like: 293.35,
+        temp_min: 294.69,
+        temp_max: 294.69,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1003,
+        humidity: 53,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 804,
+          main: "Clouds",
+          description: "overcast clouds",
+          icon: "04d",
+        },
+      ],
+      clouds: {
+        all: 91,
+      },
+      wind: {
+        speed: 2.6,
+        deg: 235,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-12 18:00:00",
+    },
+    {
+      dt: 1591995600,
+      main: {
+        temp: 295.8,
+        feels_like: 293.4,
+        temp_min: 295.8,
+        temp_max: 295.8,
+        pressure: 1014,
+        sea_level: 1014,
+        grnd_level: 1002,
+        humidity: 49,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 804,
+          main: "Clouds",
+          description: "overcast clouds",
+          icon: "04d",
+        },
+      ],
+      clouds: {
+        all: 94,
+      },
+      wind: {
+        speed: 4.05,
+        deg: 252,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-12 21:00:00",
+    },
+    {
+      dt: 1592006400,
+      main: {
+        temp: 295.21,
+        feels_like: 292.78,
+        temp_min: 295.21,
+        temp_max: 295.21,
+        pressure: 1013,
+        sea_level: 1013,
+        grnd_level: 1001,
+        humidity: 53,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 802,
+          main: "Clouds",
+          description: "scattered clouds",
+          icon: "03d",
+        },
+      ],
+      clouds: {
+        all: 50,
+      },
+      wind: {
+        speed: 4.37,
+        deg: 285,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-13 00:00:00",
+    },
+    {
+      dt: 1592017200,
+      main: {
+        temp: 293.27,
+        feels_like: 291.13,
+        temp_min: 293.27,
+        temp_max: 293.27,
+        pressure: 1013,
+        sea_level: 1013,
+        grnd_level: 1001,
+        humidity: 63,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 4.32,
+        deg: 294,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-13 03:00:00",
+    },
+    {
+      dt: 1592028000,
+      main: {
+        temp: 291.83,
+        feels_like: 290.4,
+        temp_min: 291.83,
+        temp_max: 291.83,
+        pressure: 1015,
+        sea_level: 1015,
+        grnd_level: 1002,
+        humidity: 67,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 3.11,
+        deg: 283,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-13 06:00:00",
+    },
+    {
+      dt: 1592038800,
+      main: {
+        temp: 290.97,
+        feels_like: 289.89,
+        temp_min: 290.97,
+        temp_max: 290.97,
+        pressure: 1013,
+        sea_level: 1013,
+        grnd_level: 1001,
+        humidity: 63,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 1.88,
+        deg: 248,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-13 09:00:00",
+    },
+    {
+      dt: 1592049600,
+      main: {
+        temp: 290.59,
+        feels_like: 288.37,
+        temp_min: 290.59,
+        temp_max: 290.59,
+        pressure: 1013,
+        sea_level: 1013,
+        grnd_level: 1000,
+        humidity: 62,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 3.26,
+        deg: 198,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-13 12:00:00",
+    },
+    {
+      dt: 1592060400,
+      main: {
+        temp: 291.42,
+        feels_like: 289.25,
+        temp_min: 291.42,
+        temp_max: 291.42,
+        pressure: 1013,
+        sea_level: 1013,
+        grnd_level: 1000,
+        humidity: 59,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 3.21,
+        deg: 189,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-13 15:00:00",
+    },
+    {
+      dt: 1592071200,
+      main: {
+        temp: 293.74,
+        feels_like: 291.07,
+        temp_min: 293.74,
+        temp_max: 293.74,
+        pressure: 1013,
+        sea_level: 1013,
+        grnd_level: 1000,
+        humidity: 51,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 3.92,
+        deg: 204,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-13 18:00:00",
+    },
+    {
+      dt: 1592082000,
+      main: {
+        temp: 294.97,
+        feels_like: 291.97,
+        temp_min: 294.97,
+        temp_max: 294.97,
+        pressure: 1011,
+        sea_level: 1011,
+        grnd_level: 999,
+        humidity: 52,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 4.96,
+        deg: 221,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-13 21:00:00",
+    },
+    {
+      dt: 1592092800,
+      main: {
+        temp: 294.13,
+        feels_like: 292.28,
+        temp_min: 294.13,
+        temp_max: 294.13,
+        pressure: 1010,
+        sea_level: 1010,
+        grnd_level: 998,
+        humidity: 57,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01d",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 3.59,
+        deg: 249,
+      },
+      sys: {
+        pod: "d",
+      },
+      dt_txt: "2020-06-14 00:00:00",
+    },
+    {
+      dt: 1592103600,
+      main: {
+        temp: 292.35,
+        feels_like: 291.16,
+        temp_min: 292.35,
+        temp_max: 292.35,
+        pressure: 1010,
+        sea_level: 1010,
+        grnd_level: 998,
+        humidity: 67,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 3,
+        deg: 256,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-14 03:00:00",
+    },
+    {
+      dt: 1592114400,
+      main: {
+        temp: 291.23,
+        feels_like: 290.52,
+        temp_min: 291.23,
+        temp_max: 291.23,
+        pressure: 1011,
+        sea_level: 1011,
+        grnd_level: 999,
+        humidity: 71,
+        temp_kf: 0,
+      },
+      weather: [
+        {
+          id: 800,
+          main: "Clear",
+          description: "clear sky",
+          icon: "01n",
+        },
+      ],
+      clouds: {
+        all: 0,
+      },
+      wind: {
+        speed: 2.23,
+        deg: 237,
+      },
+      sys: {
+        pod: "n",
+      },
+      dt_txt: "2020-06-14 06:00:00",
+    },
   ],
   city: {
-    id: 5391811,
-    name: "San Diego",
+    id: 5394503,
+    name: "Serra Mesa",
     coord: {
-      lat: 32.7153,
-      lon: -117.1573,
+      lat: 32.8028,
+      lon: -117.1384,
     },
     country: "US",
-    population: 1307402,
     timezone: -25200,
-    sunrise: 1591447240,
-    sunset: 1591498469,
+    sunrise: 1591620009,
+    sunset: 1591671334,
   },
 };
-export function getWeatherData(setAppState: any, axios: any): void {
-  let data = localStorage.getItem("data");
-
-  if (data) {
-    setAppState(data);
-  } else {
-    data = axios.get();
-    setAppState(data);
-  }
-}
-
-export const kelvinToFahrenheit = (k: number): number =>
-  (k - 273.15) * 1.8 + 32;
-
-export const kelvinToCelsius = (k: number): number => k - 273.15;

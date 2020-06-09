@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
-import BottomNavigation from "./shared/components/BottomNavigation";
-import Weather from "./Weather";
-import Location from "./Location";
-import Settings from "./Settings";
+import BottomNavigation from "./components/BottomNavigation";
+import Weather from "../Weather";
+import Location from "../Location";
+import Settings from "../Settings";
 
 export type View = "weather" | "location" | "settings";
 export type SetView = React.Dispatch<React.SetStateAction<string>>;
@@ -28,15 +28,31 @@ export default function App() {
   }
 
   return (
-    <Container className={classes.container} maxWidth="sm">
-      <ViewComponent />
-      <BottomNavigation view={view as View} setView={setView} />
+    <Container className={classes.container} maxWidth="lg">
+      <div className={classes.viewWrapper}>
+        <ViewComponent />
+      </div>
+      <div className={classes.navWrapper}>
+        <BottomNavigation view={view as View} setView={setView} />
+      </div>
     </Container>
   );
 }
 
 const useStyles = makeStyles({
   container: {
+    display: "flex",
+    flexDirection: "column",
+    padding: "3rem 1rem",
+    overflow: "hidden",
+    height: "100vh",
+  },
+  viewWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  navWrapper: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

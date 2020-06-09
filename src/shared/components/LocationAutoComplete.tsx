@@ -5,11 +5,9 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-// @ts-ignore
 import parse from "autosuggest-highlight/parse";
 import { throttle } from "lodash";
-
-const GOOGLE_API_KEY = "AIzaSyB4vCieEx3IjPKARxsm95if9MeoshVQHSY";
+import { GOOGLE_API_KEY } from "../constants";
 
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
@@ -52,8 +50,6 @@ export default function LocationAutoComplete() {
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState<PlaceType[]>([]);
   const loaded = React.useRef(false);
-
-  console.log("Autocomplete Value", value);
 
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
@@ -128,7 +124,7 @@ export default function LocationAutoComplete() {
   return (
     <Autocomplete
       id="google-map-demo"
-      style={{ width: "50%" }}
+      style={{ width: "100%" }}
       getOptionLabel={(option) =>
         typeof option === "string" ? option : option.description
       }
@@ -148,7 +144,7 @@ export default function LocationAutoComplete() {
       renderInput={(params) => (
         <TextField
           {...params}
-          placeholder="Search City 📍"
+          placeholder="Search City by Name 📍"
           variant="standard"
           fullWidth
           size="small"
