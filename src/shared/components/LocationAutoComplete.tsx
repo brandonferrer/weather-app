@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -22,13 +22,7 @@ function loadScript(src: string, position: HTMLElement | null, id: string) {
 }
 
 const autocompleteService = { current: null };
-
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    color: theme.palette.text.secondary,
-    marginRight: theme.spacing(2),
-  },
-}));
+const placesService = { current: null };
 
 interface PlaceType {
   description: string;
@@ -42,11 +36,22 @@ interface PlaceType {
       }
     ];
   };
+  place_id: string;
 }
 
-export default function LocationAutoComplete() {
+interface DetailsType {
+  formattedAddress: string;
+  name: string;
+  lat: number;
+  lng: number;
+}
+
+const LocationAutoComplete = ({ setSearchData }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState<PlaceType | null>(null);
+  const [valueDetails, setValueDetails] = React.useState<DetailsType | null>(
+    null
+  );
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState<PlaceType[]>([]);
   const loaded = React.useRef(false);
@@ -63,12 +68,7 @@ export default function LocationAutoComplete() {
     loaded.current = true;
   }
 
-  // Limit to cities so user can only get weather by city
-  const requestOptions = {
-    types: ["(cities)"],
-  };
-
-  const fetch = React.useMemo(
+  const fetch = useMemo(
     () =>
       throttle(
         (
@@ -76,7 +76,7 @@ export default function LocationAutoComplete() {
           callback: (results?: PlaceType[]) => void
         ) => {
           (autocompleteService.current as any).getPlacePredictions(
-            { ...request, ...requestOptions },
+            { ...request, types: ["(cities)"] }, // Limit to cities so user can only get weather by city
             callback
           );
         },
@@ -85,7 +85,7 @@ export default function LocationAutoComplete() {
     []
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     let active = true;
 
     if (!autocompleteService.current && (window as any).google) {
@@ -121,10 +121,43 @@ export default function LocationAutoComplete() {
     };
   }, [value, inputValue, fetch]);
 
+  useEffect(() => {
+    if (value !== null) {
+      if (!placesService.current && (window as any).google) {
+        // Using places without map requires you to pass an element
+        placesService.current = new (window as any).google.maps.places.PlacesService(
+          document.createElement("div")
+        );
+      }
+
+      const request = {
+        placeId: value.place_id,
+        fields: ["geometry", "name", "formatted_address"],
+      };
+
+      // @ts-ignore
+      placesService.current.getDetails(request, (result) => {
+        const mapValueDetails: DetailsType = {
+          name: result.name,
+          formattedAddress: result.formatted_address,
+          lat: result.geometry.location.lat(),
+          lng: result.geometry.location.lng(),
+        };
+
+        setValueDetails(mapValueDetails);
+      });
+    }
+  }, [value]);
+
+  useEffect(() => {
+    // Report search data to parent
+    setSearchData(valueDetails);
+  }, [valueDetails, setSearchData]);
+
   return (
     <Autocomplete
-      id="google-map-demo"
-      style={{ width: "100%" }}
+      id="google-autocomplete"
+      style={{ width: "100%", paddingBottom: "1rem", paddingTop: "1rem" }}
       getOptionLabel={(option) =>
         typeof option === "string" ? option : option.description
       }
@@ -184,4 +217,13 @@ export default function LocationAutoComplete() {
       }}
     />
   );
-}
+};
+
+export default LocationAutoComplete;
+
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: theme.palette.text.secondary,
+    marginRight: theme.spacing(2),
+  },
+}));

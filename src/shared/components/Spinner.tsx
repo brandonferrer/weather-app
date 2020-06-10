@@ -15,7 +15,7 @@ export default function Spinner() {
 const useStyles = makeStyles(() =>
   createStyles({
     spinner: {
-      height: "100%",
+      height: "90vh",
       width: "100%",
       display: "flex",
       alignItems: "center",

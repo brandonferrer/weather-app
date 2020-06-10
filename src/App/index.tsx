@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
+} from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import BottomNavigation from "./components/BottomNavigation";
 import Weather from "../Weather";
-import Location from "../Location";
 import Settings from "../Settings";
 
 export default function App() {
@@ -16,32 +20,37 @@ export default function App() {
     case "weather":
       ViewComponent = Weather;
       break;
-    case "location":
-      ViewComponent = Location;
-      break;
     case "settings":
       ViewComponent = Settings;
       break;
   }
 
   return (
-    <Container className={classes.container} maxWidth="lg">
-      <div className={classes.viewWrapper}>
-        <ViewComponent />
-      </div>
-      <div className={classes.navWrapper}>
-        <BottomNavigation view={view as View} setView={setView} />
-      </div>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container className={classes.container} maxWidth="lg">
+        <div className={classes.viewWrapper}>
+          <ViewComponent />
+        </div>
+        <div className={classes.navWrapper}>
+          <BottomNavigation view={view as View} setView={setView} />
+        </div>
+      </Container>
+    </ThemeProvider>
   );
 }
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ['"Noto Sans"', '"Helvetica Neue"', "sans-serif"].join(","),
+  },
+});
 
 const useStyles = makeStyles({
   container: {
     display: "flex",
     flexDirection: "column",
     padding: "3rem 1rem",
-    overflow: "hidden",
     height: "100vh",
   },
   viewWrapper: {

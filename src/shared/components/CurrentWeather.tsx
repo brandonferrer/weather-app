@@ -1,19 +1,57 @@
 import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+import { buildIconClassName } from "../utils";
 
-export default function CurrentWeather() {
+type Props = {
+  data: CityWeather;
+};
+
+const CurrentWeather = ({ data }: Props) => {
   const classes = useStyles();
 
-  return <Paper className={classes.paper}>Current Weather</Paper>;
-}
+  const { name } = data.city;
+  const { temp, description, iconId } = data.weather[0];
+
+  return (
+    <>
+      <h1>Right Now</h1>
+      <div className={classes.container}>
+        <h1 className={classes.name}>{name}</h1>
+        <div className={classes.iconTempWrapper}>
+          <h1 className={classes.temp}>
+            {temp}&#176; | &nbsp;
+            <i className={`${buildIconClassName(iconId)} ${classes.icon}`} />
+          </h1>
+        </div>
+        <h1>{description}</h1>
+      </div>
+    </>
+  );
+};
+
+export default CurrentWeather;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    paper: {
-      padding: theme.spacing(2),
+    container: {
       textAlign: "center",
-      color: theme.palette.text.secondary,
+    },
+    name: {
+      fontFamily: "Fjalla One",
+      fontSize: "3rem",
+    },
+    temp: {
+      fontSize: "3rem",
+      margin: 0,
+      textAlign: "center",
+    },
+    icon: {
+      fontSize: "3.5rem",
+    },
+    iconTempWrapper: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-around",
     },
   })
 );

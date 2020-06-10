@@ -8,18 +8,25 @@ declare namespace NodeJS {
   }
 }
 
-type View = "weather" | "location" | "settings";
+type View = "weather" | "settings";
 type SetView = React.Dispatch<React.SetStateAction<string>>;
 
 interface Weather {
   timeDataForcasted: string;
+  timeDataForcastedTxt: string;
   temp: number;
   tempFeelsLike: number;
   tempLow: number;
   tempHigh: number;
+  tempCelsius: number;
+  tempFeelsLikeCelsius: number;
+  tempLowCelsius: number;
+  tempHighCelsius: number;
+  humidity: number;
   description: string;
   descriptionDetail: string;
   icon: string;
+  iconId: string;
 }
 
 interface City {
@@ -34,5 +41,10 @@ interface City {
 
 interface CityWeather {
   city: City;
-  weather: Weather;
+  weather: Weather[];
 }
+
+type LatLng = {
+  lat: number;
+  lng: number;
+};

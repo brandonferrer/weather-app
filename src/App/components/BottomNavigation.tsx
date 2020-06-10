@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { BottomNavigation as MuiBottomNavigation } from "@material-ui/core";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import CloudOutlinedIcon from "@material-ui/icons/CloudOutlined";
-import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 
 type Props = {
@@ -11,7 +10,7 @@ type Props = {
   setView: SetView;
 };
 
-export default function BottomNavigation({ view, setView }: Props) {
+const BottomNavigation = ({ view, setView }: Props) => {
   const classes = useStyles();
 
   return (
@@ -29,18 +28,15 @@ export default function BottomNavigation({ view, setView }: Props) {
         icon={<CloudOutlinedIcon />}
       />
       <BottomNavigationAction
-        label="Location"
-        value="location"
-        icon={<RoomOutlinedIcon />}
-      />
-      <BottomNavigationAction
         label="Settings"
         value="settings"
         icon={<SettingsOutlinedIcon />}
       />
     </MuiBottomNavigation>
   );
-}
+};
+
+export default BottomNavigation;
 
 const useStyles = makeStyles({
   root: {
