@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import { AppContext } from "../context";
+import { useAppContext } from "../context";
 import { setDefaultLocation } from "../../shared/utils";
 
 export default function SettingsContent() {
-  const { isFahrenheit, toggleIsFahrenheit, searchData } = useContext(
-    AppContext
-  );
+  const { isFahrenheit, toggleIsFahrenheit, searchData } = useAppContext();
   const classes = useStyles();
 
   const name = searchData?.name;

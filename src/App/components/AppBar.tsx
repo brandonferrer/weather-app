@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { AppBar as MuiAppBar } from "@material-ui/core";
 import Toolbar from "@material-ui/core/Toolbar";
-import { AppContext } from "../context";
+import { useAppContext } from "../context";
 import LocationAutoComplete from "./LocationAutoComplete";
 import SettingsPopover from "./SettingsPopover";
 
 export default function AppBar() {
-  const { setSearchData } = useContext(AppContext);
+  const { setSearchData } = useAppContext();
   const classes = useStyles();
 
   return (

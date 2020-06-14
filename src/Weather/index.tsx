@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
-import { AppContext } from "../App/context";
+import { useAppContext } from "../App/context";
 import CurrentWeather from "./components/CurrentWeather";
 import WeatherDetails from "./components/WeatherDetails";
 import ForecastWeather from "./components/ForecastWeather";
 
 export default function Weather() {
-  const { data } = useContext(AppContext);
+  const { data } = useAppContext();
   const classes = useStyles();
 
   const { city, currentWeather, fiveDayWeather }: any = data;

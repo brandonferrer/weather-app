@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useContext } from "react";
 
 const contextDefaults: ProviderValues = {
   data: null,
@@ -9,6 +9,7 @@ const contextDefaults: ProviderValues = {
   toggleIsFahrenheit: () => true,
 };
 export const AppContext = createContext(contextDefaults);
+export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children, providerValues }) => {
   return (

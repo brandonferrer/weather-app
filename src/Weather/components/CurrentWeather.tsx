@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { AppContext } from "../../App/context";
+import { useAppContext } from "../../App/context";
 import { buildIconClassName } from "../../shared/utils";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function CurrentWeather({ weather, city }: Props) {
-  const { isFahrenheit } = useContext(AppContext);
+  const { isFahrenheit } = useAppContext();
   const classes = useStyles();
 
   const { temp, tempCelsius, description, iconId }: any = weather;

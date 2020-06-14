@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { format } from "date-fns";
-import { AppContext } from "../../App/context";
+import { useAppContext } from "../../App/context";
 import { createRowData } from "../../shared/utils";
 
 type Props = {
@@ -18,7 +18,7 @@ type Props = {
 };
 
 export default function WeatherDetails({ weather, city, hideHeading }: Props) {
-  const { isFahrenheit } = useContext(AppContext);
+  const { isFahrenheit } = useAppContext();
   const classes = useStyles();
 
   const {
