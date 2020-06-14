@@ -8,14 +8,16 @@ import LocationAutoComplete from "./LocationAutoComplete";
 import SettingsPopover from "./SettingsPopover";
 
 export default function AppBar() {
-  const { setSearchData, toggleIsFahrenheit } = useContext(AppContext);
+  const { setSearchData, toggleIsFahrenheit, isFahrenheit } = useContext(
+    AppContext
+  );
   const classes = useStyles();
 
   return (
     <MuiAppBar elevation={1} position="fixed" className={classes.appBar}>
       <Container maxWidth="lg">
         <Toolbar>
-          <SettingsPopover toggleIsFahrenheit={toggleIsFahrenheit} />
+          <SettingsPopover />
           <div className={classes.searchWrapper}>
             <LocationAutoComplete setSearchData={setSearchData} />
           </div>

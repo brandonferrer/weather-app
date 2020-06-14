@@ -5,7 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import TuneIcon from "@material-ui/icons/Tune";
 import SettingsContent from "./SettingsContent";
 
-export default function SettingsPopover({ toggleIsFahrenheit }) {
+export default function SettingsPopover() {
   const classes = useStyles();
   const [element, setElement] = React.useState<HTMLButtonElement | null>(null);
 
@@ -18,7 +18,7 @@ export default function SettingsPopover({ toggleIsFahrenheit }) {
   };
 
   const open = Boolean(element);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "settings-popover" : undefined;
 
   return (
     <div>

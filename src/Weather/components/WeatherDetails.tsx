@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -8,6 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { format } from "date-fns";
+import { AppContext } from "../../App/context";
 import { createRowData } from "../../shared/utils";
 
 type Props = {
@@ -17,13 +18,17 @@ type Props = {
 };
 
 export default function WeatherDetails({ weather, city, hideHeading }: Props) {
+  const { isFahrenheit } = useContext(AppContext);
   const classes = useStyles();
 
   const {
     tempFeelsLike,
+    tempFeelsLikeCelsius,
     humidity,
     tempHigh,
+    tempHighCelsius,
     tempLow,
+    tempLowCelsius,
     timeDataForcasted,
   }: any = weather;
 
@@ -34,10 +39,13 @@ export default function WeatherDetails({ weather, city, hideHeading }: Props) {
   const formattedDate = format(date, "ccc, MMM dd");
 
   let rows = [
-    createRowData("Feels Like", `${tempFeelsLike}°`),
+    createRowData(
+      "Feels Like",
+      `${isFahrenheit ? tempFeelsLike : tempFeelsLikeCelsius}°`
+    ),
     createRowData("Humidity", `${humidity}%`),
-    createRowData("High Temp", `${tempHigh}°`),
-    createRowData("Low Temp", `${tempLow}°`),
+    createRowData("High Temp", `${isFahrenheit ? tempHigh : tempHighCelsius}°`),
+    createRowData("Low Temp", `${isFahrenheit ? tempLow : tempLowCelsius}°`),
   ];
 
   // Free OpenWeather API does not return sunrise/sunset for days in future

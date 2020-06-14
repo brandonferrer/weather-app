@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { AppContext } from "../../App/context";
 import { buildIconClassName } from "../../shared/utils";
 
 type Props = {
@@ -8,9 +9,10 @@ type Props = {
 };
 
 export default function CurrentWeather({ weather, city }: Props) {
+  const { isFahrenheit } = useContext(AppContext);
   const classes = useStyles();
 
-  const { temp, description, iconId }: any = weather;
+  const { temp, tempCelsius, description, iconId }: any = weather;
   const name = city?.name;
 
   return (
@@ -18,7 +20,7 @@ export default function CurrentWeather({ weather, city }: Props) {
       <h1 className={classes.name}>{name}</h1>
       <div className={classes.iconTempWrapper}>
         <h1 className={classes.temp}>
-          {temp}&#176; | &nbsp;
+          {isFahrenheit ? temp : tempCelsius}&#176; | &nbsp;
           <i className={`${buildIconClassName(iconId)} ${classes.icon}`} />
         </h1>
       </div>

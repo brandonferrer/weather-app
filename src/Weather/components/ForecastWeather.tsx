@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -6,6 +6,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
 import { format } from "date-fns";
+import { AppContext } from "../../App/context";
 import { buildIconClassName } from "../../shared/utils";
 import WeatherDetails from "./WeatherDetails";
 
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export default function ForecastWeather({ fiveDayWeather, city }: Props) {
+  const { isFahrenheit } = useContext(AppContext);
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const classes = useStyles();
 
@@ -42,7 +44,9 @@ export default function ForecastWeather({ fiveDayWeather, city }: Props) {
                 {formattedDate}
               </Typography>
               <Typography className={classes.secondaryHeading}>
-                H: {item.tempHigh}° L: {item.tempLow}° &nbsp; &nbsp;
+                H: {isFahrenheit ? item.tempHigh : item.tempHighCelsius}° L:{" "}
+                {isFahrenheit ? item.tempLow : item.tempLowCelsius}° &nbsp;
+                &nbsp;
                 <i className={buildIconClassName(item.iconId)} />
               </Typography>
             </ExpansionPanelSummary>

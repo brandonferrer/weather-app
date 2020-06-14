@@ -1,33 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import Paper from "@material-ui/core/Paper";
-// import Switch from "@material-ui/core/Switch";
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { AppContext } from "../context";
 
-// const SettingsContent = ({ isFar }) => {
-//   const classes = useStyles();
-
-//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     setState({ ...state, [event.target.name]: event.target.checked });
-//   };
-//   return (
-//     <Paper className={classes.paper}>
-//       <Switch
-//         checked={state.checkedB}
-//         onChange={handleChange}
-//         color="primary"
-//         name="checkedB"
-//         inputProps={{ "aria-label": "primary checkbox" }}
-//       />
-//     </Paper>
-//   );
-// };
-
-const SettingsContent = () => {
+export default function SettingsContent() {
+  const { isFahrenheit, toggleIsFahrenheit } = useContext(AppContext);
   const classes = useStyles();
-  return <Paper className={classes.paper}>Settings Content</Paper>;
-};
 
-export default SettingsContent;
+  return (
+    <Paper className={classes.paper}>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={isFahrenheit}
+            onChange={() => toggleIsFahrenheit(!isFahrenheit)}
+            color="primary"
+            name="isFahrenheitSwitch"
+            inputProps={{ "aria-label": "primary checkbox" }}
+          />
+        }
+        label="Display Fahrenheit"
+      />
+    </Paper>
+  );
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
