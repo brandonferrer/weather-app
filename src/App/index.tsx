@@ -30,15 +30,11 @@ export default function App() {
   };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      // Users current location
-      let location: LatLng = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
+    const defaultLocation = getDefaultLocation();
+    let location: LatLng;
 
-      // Users saved default location
-      const defaultLocation = getDefaultLocation();
+    const locationDenial = () => {
+      location = { lat: 32.715738, lng: -117.1610838 };
 
       if (defaultLocation) {
         location = {
@@ -50,7 +46,30 @@ export default function App() {
       getDataByLatLng(location, api, OPENWEATHER_API_KEY).then((result) =>
         setData(cleanApiResponse(result.data))
       );
-    });
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        if (position) {
+          location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+        }
+
+        if (defaultLocation) {
+          location = {
+            lat: defaultLocation.lat,
+            lng: defaultLocation.lng,
+          };
+        }
+
+        getDataByLatLng(location, api, OPENWEATHER_API_KEY).then((result) =>
+          setData(cleanApiResponse(result.data))
+        );
+      },
+      (error) => error.code === error.PERMISSION_DENIED && locationDenial()
+    );
   }, []);
 
   useEffect(() => {
