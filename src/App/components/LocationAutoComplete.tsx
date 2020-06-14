@@ -24,28 +24,6 @@ function loadScript(src: string, position: HTMLElement | null, id: string) {
 const autocompleteService = { current: null };
 const placesService = { current: null };
 
-interface PlaceType {
-  description: string;
-  structured_formatting: {
-    main_text: string;
-    secondary_text: string;
-    main_text_matched_substrings: [
-      {
-        offset: number;
-        length: number;
-      }
-    ];
-  };
-  place_id: string;
-}
-
-interface DetailsType {
-  formattedAddress: string;
-  name: string;
-  lat: number;
-  lng: number;
-}
-
 const LocationAutoComplete = ({ setSearchData }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState<PlaceType | null>(null);

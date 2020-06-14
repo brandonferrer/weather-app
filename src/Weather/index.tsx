@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Grow from "@material-ui/core/Grow";
@@ -6,7 +6,7 @@ import CurrentWeather from "./components/CurrentWeather";
 import WeatherDetails from "./components/WeatherDetails";
 import ForecastWeather from "./components/ForecastWeather";
 
-export default function Weather({ data }) {
+export default function Weather() {
   const classes = useStyles();
 
   return (
@@ -14,13 +14,13 @@ export default function Weather({ data }) {
       <Grow in timeout={400}>
         <Grid container spacing={10} alignItems="center">
           <Grid item xs={12} md={6}>
-            <CurrentWeather data={data} />
+            <CurrentWeather />
           </Grid>
           <Grid item xs={12} md={6}>
-            <WeatherDetails data={data} />
+            <WeatherDetails />
           </Grid>
           <Grid item xs={12}>
-            <ForecastWeather data={data} />
+            <ForecastWeather />
           </Grid>
         </Grid>
       </Grow>

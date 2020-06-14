@@ -8,9 +8,6 @@ declare namespace NodeJS {
   }
 }
 
-type View = "weather" | "settings";
-type SetView = React.Dispatch<React.SetStateAction<string>>;
-
 interface Weather {
   timeDataForcasted: string;
   timeDataForcastedTxt: string;
@@ -39,7 +36,7 @@ interface City {
   timezone: number;
 }
 
-interface CityWeather {
+interface Data {
   city: City;
   weather: Weather[];
 }
@@ -50,10 +47,32 @@ type LatLng = {
 };
 
 interface ProviderValues {
-  data: CityWeather | null;
+  data: { city: City; weather: Weather[] } | null;
   setData: React.Dispatch<React.SetStateAction<CityWeather | null>>;
   searchData: any;
   setSearchData: any;
   isFahrenheit: boolean;
   toggleIsFahrenheit: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface PlaceType {
+  description: string;
+  structured_formatting: {
+    main_text: string;
+    secondary_text: string;
+    main_text_matched_substrings: [
+      {
+        offset: number;
+        length: number;
+      }
+    ];
+  };
+  place_id: string;
+}
+
+interface DetailsType {
+  formattedAddress: string;
+  name: string;
+  lat: number;
+  lng: number;
 }

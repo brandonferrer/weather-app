@@ -1,6 +1,6 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
-import Switch from "@material-ui/core/Switch";
+// import Switch from "@material-ui/core/Switch";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 // const SettingsContent = ({ isFar }) => {
@@ -22,7 +22,10 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 //   );
 // };
 
-const SettingsContent = () => <h1>Settings</h1>;
+const SettingsContent = () => {
+  const classes = useStyles();
+  return <Paper className={classes.paper}>Settings Content</Paper>;
+};
 
 export default SettingsContent;
 

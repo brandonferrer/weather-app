@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -6,27 +6,27 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { get } from "lodash";
+import { AppContext } from "../../App/context";
 import { createRowData } from "../../shared/utils";
 
-type Props = {
-  data: CityWeather;
-};
-
-const WeatherDetails = ({ data }: Props) => {
+export default function WeatherDetails() {
+  const { data } = useContext(AppContext);
   const classes = useStyles();
 
-  const { weather, city } = data;
+  // TODO: Don't use lodash
+  const weather = get(data, "weather", []);
+  const sunrise = get(data, "city.sunrise");
+  const sunset = get(data, "city.sunset");
 
+  // TODO: Revisit selecting current weather item
   const rows = [
     createRowData("Feels Like", `${weather[0].tempFeelsLike}°`),
     createRowData("Humidity", `${weather[0].humidity}%`),
     createRowData("High Temp", `${weather[0].tempHigh}°`),
     createRowData("Low Temp", `${weather[0].tempLow}°`),
-    createRowData(
-      "Sunrise",
-      new Date(city.sunrise * 1000).toLocaleTimeString()
-    ),
-    createRowData("Sunset", new Date(city.sunset * 1000).toLocaleTimeString()),
+    createRowData("Sunrise", new Date(sunrise * 1000).toLocaleTimeString()),
+    createRowData("Sunset", new Date(sunset * 1000).toLocaleTimeString()),
   ];
 
   return (
@@ -48,9 +48,7 @@ const WeatherDetails = ({ data }: Props) => {
       </TableContainer>
     </>
   );
-};
-
-export default WeatherDetails;
+}
 
 const useStyles = makeStyles({
   table: {

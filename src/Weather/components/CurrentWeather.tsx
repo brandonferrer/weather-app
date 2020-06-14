@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { get } from "lodash";
+import { AppContext } from "../../App/context";
 import { buildIconClassName } from "../../shared/utils";
 
-type Props = {
-  data: CityWeather;
-};
-
-const CurrentWeather = ({ data }: Props) => {
+export default function CurrentWeather() {
+  const { data } = useContext(AppContext);
   const classes = useStyles();
 
-  const { name } = data.city;
+  // TODO: Don't use lodash and handle ts-ignore
+  const name = get(data, "city.name");
+
+  // @ts-ignore
   const { temp, description, iconId } = data.weather[0];
 
   return (
@@ -24,9 +26,7 @@ const CurrentWeather = ({ data }: Props) => {
       <h1>{description}</h1>
     </div>
   );
-};
-
-export default CurrentWeather;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

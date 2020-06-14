@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { buildIconClassName } from "../../shared/utils";
 import { format } from "date-fns";
+import { get } from "lodash";
+import { AppContext } from "../../App/context";
+import { buildIconClassName } from "../../shared/utils";
 
-type Props = {
-  data: CityWeather;
-};
-
-const ForecastWeather = ({ data }: Props) => {
+export default function ForecastWeather() {
+  const { data } = useContext(AppContext);
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const classes = useStyles();
 
@@ -23,23 +22,23 @@ const ForecastWeather = ({ data }: Props) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const { weather } = data;
+  // TODO: Don't use lodash
+  const weather = get(data, "weather", []);
 
-  // Using 12:00 data for 5 day forecast
-  const filteredWeather = weather.filter((i) =>
+  // TODO: Revisit selecting daily weather item. Using 12:00 data for 5 day forecast
+  const filteredWeather = weather.filter((i: any) =>
     i.timeDataForcastedTxt.includes("12:00:00")
   );
 
   return (
     <div className={classes.root}>
       <h1>5 Day Forecast</h1>
-      {filteredWeather.map((i) => {
+      {filteredWeather.map((i: any) => {
         const date = new Date((i.timeDataForcasted as any) * 1000);
         const formattedDate = format(date, "ccc, MMM dd");
 
         return (
           <ExpansionPanel
-            // timeDataForcasted is unique per item, using as key to expand panel
             expanded={expanded === i.timeDataForcasted}
             onChange={handleChange(i.timeDataForcasted)}
           >
@@ -60,9 +59,7 @@ const ForecastWeather = ({ data }: Props) => {
       })}
     </div>
   );
-};
-
-export default ForecastWeather;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

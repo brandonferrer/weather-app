@@ -29,7 +29,7 @@ export const api = setup({
 });
 
 // Utility to shape reponse data
-export const cleanApiResponse = (data: any): CityWeather => ({
+export const cleanApiResponse = (data: any): Data => ({
   city: {
     name: data.city.name,
     country: data.city.country,

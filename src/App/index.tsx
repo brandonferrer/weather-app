@@ -14,7 +14,7 @@ import Weather from "../Weather";
 import { AppProvider } from "./context";
 
 export default function App() {
-  const [data, setData] = useState<CityWeather | null>(null);
+  const [data, setData] = useState<Data | null>(null);
   const [searchData, setSearchData] = useState<any>(null);
   const [isFahrenheit, toggleIsFahrenheit] = useState(true);
   const classes = useStyles();
@@ -65,7 +65,7 @@ export default function App() {
         <Container className={classes.container} maxWidth="lg">
           <AppBar />
           <div className={classes.viewWrapper}>
-            {data ? <Weather data={data} /> : <Spinner />}
+            {data ? <Weather /> : <Spinner />}
           </div>
         </Container>
       </AppProvider>
