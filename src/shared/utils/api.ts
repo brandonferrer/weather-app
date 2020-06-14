@@ -30,7 +30,6 @@ export const api = setup({
 
 // Utility to shape reponse data
 export const cleanApiResponse = (data: any): Data => {
-  console.log("Original Data", data);
   const byHour = data.list.map((i: any) => ({
     timeDataForcasted: i.dt,
     timeDataForcastedTxt: i.dt_txt,

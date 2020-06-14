@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core/styles";
 import { api, cleanApiResponse, getDataByLatLng } from "../shared/utils/api";
 import { OPENWEATHER_API_KEY } from "../shared/constants";
+import { getDefaultLocation } from "../shared/utils";
 import Spinner from "./components/Spinner";
 import AppBar from "./components/AppBar";
 import Weather from "../Weather";
@@ -30,12 +31,22 @@ export default function App() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      const location: LatLng = {
+      // Users current location
+      let location: LatLng = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
 
-      // Weather defaults to users current location on load
+      // Users saved default location
+      const defaultLocation = getDefaultLocation();
+
+      if (defaultLocation) {
+        location = {
+          lat: defaultLocation.lat,
+          lng: defaultLocation.lng,
+        };
+      }
+
       getDataByLatLng(location, api, OPENWEATHER_API_KEY).then((result) =>
         setData(cleanApiResponse(result.data))
       );
@@ -47,7 +58,7 @@ export default function App() {
       // Reset data to render spinner
       setData(null);
 
-      const location = {
+      const location: LatLng = {
         lat: searchData.lat,
         lng: searchData.lng,
       };

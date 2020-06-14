@@ -8,9 +8,7 @@ import LocationAutoComplete from "./LocationAutoComplete";
 import SettingsPopover from "./SettingsPopover";
 
 export default function AppBar() {
-  const { setSearchData, toggleIsFahrenheit, isFahrenheit } = useContext(
-    AppContext
-  );
+  const { setSearchData } = useContext(AppContext);
   const classes = useStyles();
 
   return (
