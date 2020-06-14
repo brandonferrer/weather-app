@@ -10,12 +10,16 @@ import { get } from "lodash";
 import { AppContext } from "../../App/context";
 import { createRowData } from "../../shared/utils";
 
-export default function WeatherDetails() {
+type Props = {
+  hideHeading?: boolean;
+};
+
+export default function WeatherDetails({ hideHeading }: Props) {
   const { data } = useContext(AppContext);
   const classes = useStyles();
 
   // TODO: Don't use lodash
-  const weather = get(data, "weather", []);
+  const weather = get(data, "weatherByHour", []);
   const sunrise = get(data, "city.sunrise");
   const sunset = get(data, "city.sunset");
 
@@ -31,7 +35,7 @@ export default function WeatherDetails() {
 
   return (
     <>
-      <h1>Weather Details</h1>
+      {!hideHeading && <h1>Weather Details</h1>}
       <TableContainer component={Paper}>
         <Table className={classes.table}>
           <TableBody>

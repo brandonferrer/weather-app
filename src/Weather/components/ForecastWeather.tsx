@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import { get } from "lodash";
 import { AppContext } from "../../App/context";
 import { buildIconClassName } from "../../shared/utils";
+import WeatherDetails from "./WeatherDetails";
 
 export default function ForecastWeather() {
   const { data } = useContext(AppContext);
@@ -23,7 +24,7 @@ export default function ForecastWeather() {
   };
 
   // TODO: Don't use lodash
-  const weather = get(data, "weather", []);
+  const weather = get(data, "weatherByHour", []);
 
   // TODO: Revisit selecting daily weather item. Using 12:00 data for 5 day forecast
   const filteredWeather = weather.filter((i: any) =>
@@ -52,7 +53,7 @@ export default function ForecastWeather() {
               </Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>Add weather details here</Typography>
+              <WeatherDetails hideHeading />
             </ExpansionPanelDetails>
           </ExpansionPanel>
         );

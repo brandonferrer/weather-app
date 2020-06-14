@@ -38,7 +38,9 @@ interface City {
 
 interface Data {
   city: City;
-  weather: Weather[];
+  weatherByHour: Weather[];
+  currentWeather: Weather;
+  fiveDayWeather: Weather[];
 }
 
 type LatLng = {
@@ -47,8 +49,8 @@ type LatLng = {
 };
 
 interface ProviderValues {
-  data: { city: City; weather: Weather[] } | null;
-  setData: React.Dispatch<React.SetStateAction<CityWeather | null>>;
+  data: Data | null;
+  setData: React.Dispatch<React.SetStateAction<Data | null>>;
   searchData: any;
   setSearchData: any;
   isFahrenheit: boolean;

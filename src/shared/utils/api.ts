@@ -39,7 +39,7 @@ export const cleanApiResponse = (data: any): Data => ({
     sunset: data.city.sunset,
     timezone: data.city.timezone,
   },
-  weather: data.list.map((i) => ({
+  weatherByHour: data.list.map((i: any) => ({
     timeDataForcasted: i.dt,
     timeDataForcastedTxt: i.dt_txt,
     temp: kelvinToFahrenheit(i.main.temp),
@@ -56,6 +56,8 @@ export const cleanApiResponse = (data: any): Data => ({
     icon: i.weather[0].icon,
     iconId: i.weather[0].id,
   })),
+  currentWeather: data.list[0],
+  fiveDayWeather: data.list.filter((i: any) => i.dt_txt.includes("12:00:00")),
 });
 
 export const getDataByLatLng = async (

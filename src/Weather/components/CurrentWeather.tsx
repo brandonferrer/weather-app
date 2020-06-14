@@ -12,7 +12,7 @@ export default function CurrentWeather() {
   const name = get(data, "city.name");
 
   // @ts-ignore
-  const { temp, description, iconId } = data.weather[0];
+  const { temp, description, iconId } = data?.weatherByHour[0];
 
   return (
     <div className={classes.container}>
