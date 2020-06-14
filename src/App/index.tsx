@@ -14,7 +14,7 @@ import AppBar from "./components/AppBar";
 import Weather from "../Weather";
 import { AppProvider } from "./context";
 
-export default function App() {
+export default function App({ getWeatherData = getDataByLatLng }) {
   const [data, setData] = useState<Data | null>(null);
   const [searchData, setSearchData] = useState<any>(null);
   const [isFahrenheit, toggleIsFahrenheit] = useState(true);
@@ -43,7 +43,7 @@ export default function App() {
         };
       }
 
-      getDataByLatLng(location, api, OPENWEATHER_API_KEY).then((result) =>
+      getWeatherData(location, api, OPENWEATHER_API_KEY).then((result) =>
         setData(cleanApiResponse(result.data))
       );
     };
@@ -64,13 +64,13 @@ export default function App() {
           };
         }
 
-        getDataByLatLng(location, api, OPENWEATHER_API_KEY).then((result) =>
+        getWeatherData(location, api, OPENWEATHER_API_KEY).then((result) =>
           setData(cleanApiResponse(result.data))
         );
       },
       (error) => error.code === error.PERMISSION_DENIED && locationDenial()
     );
-  }, []);
+  }, [getWeatherData]);
 
   useEffect(() => {
     if (searchData) {
