@@ -12,7 +12,7 @@ export default function AppBar() {
   const classes = useStyles();
 
   return (
-    <MuiAppBar position="fixed" elevation={0} className={classes.appBar}>
+    <MuiAppBar elevation={1} position="fixed" className={classes.appBar}>
       <Container maxWidth="lg">
         <Toolbar>
           <SettingsPopover toggleIsFahrenheit={toggleIsFahrenheit} />

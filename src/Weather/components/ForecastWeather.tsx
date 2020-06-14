@@ -3,8 +3,8 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Typography from "@material-ui/core/Typography";
 import { format } from "date-fns";
 import { buildIconClassName } from "../../shared/utils";
 import WeatherDetails from "./WeatherDetails";
@@ -38,7 +38,7 @@ export default function ForecastWeather({ fiveDayWeather, city }: Props) {
             onChange={handleChange(item.timeDataForcasted)}
           >
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className={classes.heading}>
+              <Typography className={classes.dateHeading}>
                 {formattedDate}
               </Typography>
               <Typography className={classes.secondaryHeading}>
@@ -66,8 +66,8 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
       marginBottom: "2rem",
     },
-    heading: {
-      fontSize: theme.typography.pxToRem(15),
+    dateHeading: {
+      fontSize: theme.typography.pxToRem(18),
       flexBasis: "50%",
       flexShrink: 0,
     },

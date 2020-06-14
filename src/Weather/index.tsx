@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     wrapper: {
       flexGrow: 1,
+      paddingTop: "1.5rem",
     },
   })
 );
