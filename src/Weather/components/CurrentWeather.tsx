@@ -1,18 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { get } from "lodash";
-import { AppContext } from "../../App/context";
 import { buildIconClassName } from "../../shared/utils";
 
-export default function CurrentWeather() {
-  const { data } = useContext(AppContext);
+type Props = {
+  weather: Weather;
+  city: City;
+};
+
+export default function CurrentWeather({ weather, city }: Props) {
   const classes = useStyles();
 
-  // TODO: Don't use lodash and handle ts-ignore
-  const name = get(data, "city.name");
-
-  // @ts-ignore
-  const { temp, description, iconId } = data?.weatherByHour[0];
+  const { temp, description, iconId }: any = weather;
+  const name = city?.name;
 
   return (
     <div className={classes.container}>

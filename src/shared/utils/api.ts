@@ -29,17 +29,8 @@ export const api = setup({
 });
 
 // Utility to shape reponse data
-export const cleanApiResponse = (data: any): Data => ({
-  city: {
-    name: data.city.name,
-    country: data.city.country,
-    latitude: data.city.coord.lat,
-    longitude: data.city.coord.lon,
-    sunrise: data.city.sunrise,
-    sunset: data.city.sunset,
-    timezone: data.city.timezone,
-  },
-  weatherByHour: data.list.map((i: any) => ({
+export const cleanApiResponse = (data: any): Data => {
+  const byHour = data.list.map((i: any) => ({
     timeDataForcasted: i.dt,
     timeDataForcastedTxt: i.dt_txt,
     temp: kelvinToFahrenheit(i.main.temp),
@@ -55,10 +46,25 @@ export const cleanApiResponse = (data: any): Data => ({
     descriptionDetail: i.weather[0].description,
     icon: i.weather[0].icon,
     iconId: i.weather[0].id,
-  })),
-  currentWeather: data.list[0],
-  fiveDayWeather: data.list.filter((i: any) => i.dt_txt.includes("12:00:00")),
-});
+  }));
+
+  return {
+    city: {
+      name: data.city.name,
+      country: data.city.country,
+      latitude: data.city.coord.lat,
+      longitude: data.city.coord.lon,
+      sunrise: data.city.sunrise,
+      sunset: data.city.sunset,
+      timezone: data.city.timezone,
+    },
+    weatherByHour: byHour,
+    currentWeather: byHour[0],
+    fiveDayWeather: byHour.filter((i: any) =>
+      i.timeDataForcastedTxt.includes("12:00:00")
+    ),
+  };
+};
 
 export const getDataByLatLng = async (
   location: LatLng,
