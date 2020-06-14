@@ -48,3 +48,12 @@ type LatLng = {
   lat: number;
   lng: number;
 };
+
+interface ProviderValues {
+  data: CityWeather | null;
+  setData: React.Dispatch<React.SetStateAction<CityWeather | null>>;
+  searchData: any;
+  setSearchData: any;
+  isFahrenheit: boolean;
+  toggleIsFahrenheit: React.Dispatch<React.SetStateAction<boolean>>;
+}

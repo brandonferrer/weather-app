@@ -6,7 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { createRowData } from "../utils";
+import { createRowData } from "../../shared/utils";
 
 type Props = {
   data: CityWeather;
