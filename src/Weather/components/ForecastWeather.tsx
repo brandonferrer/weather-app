@@ -36,6 +36,7 @@ export default function ForecastWeather({ fiveDayWeather, city }: Props) {
 
         return (
           <ExpansionPanel
+            key={item.timeDataForcasted}
             expanded={expanded === item.timeDataForcasted}
             onChange={handleChange(item.timeDataForcasted)}
           >
