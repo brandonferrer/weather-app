@@ -9,11 +9,11 @@ export const buildIconClassName = (id: string): string => `wi wi-owm-day-${id}`;
 
 export const createRowData = (name: string, value: any) => ({ name, value });
 
-export const setDefaultLocation = (
+export const setDefaultLocation = async (
   cityName: string,
   lat: number,
   lng: number
-): void => {
+): Promise<any> => {
   const key: string = LOCAL_STORAGE_KEY;
 
   const data: any = {
